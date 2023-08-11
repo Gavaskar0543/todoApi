@@ -1,6 +1,6 @@
 const Task = require('../../../model/todo');
 //add task
-module.export.newTodo = async function(req,res){
+module.exports.newTodo = async function(req,res){
     try{
         const todo = await Task.create(req.body);
       return  res.json(200,{
@@ -17,7 +17,7 @@ module.export.newTodo = async function(req,res){
 }
 
 //delete
-module.export.destroyTask = async function(req,res){
+module.exports.destroyTask = async function(req,res){
     try{
       await Task.deleteOne({_id:req.params.id});
       return res.json(200,{
@@ -33,7 +33,7 @@ module.export.destroyTask = async function(req,res){
     }
 }
 //updating task
-module.export.updateTask = async function(req,res){
+module.exports.updateTask = async function(req,res){
     try{
         await Task.findOneAndUpdate({_id:req.params.id});
         return res.json(200,{
@@ -46,7 +46,7 @@ module.export.updateTask = async function(req,res){
     }
 }
 //show all tasks
-module.export.allTask = async function(req,res){
+module.exports.allTask = async function(req,res){
     try{
         let todos = await Task.find();
         return res.json(200,{

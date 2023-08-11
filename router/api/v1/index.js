@@ -6,4 +6,4 @@ router.get('/tasks',taskController.allTask);
 router.post('/newTask',taskController.newTodo);
 router.delete('/destroy/:id',taskController.destroyTask);
 router.put('/updateTask',taskController.updateTask);
-module.export = router;
+module.exports = router;

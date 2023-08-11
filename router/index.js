@@ -3,4 +3,4 @@ const router = express.Router();
 
 router.use('/api',require('./api'));
 
-module.export = router;
+module.exports = router;
