@@ -35,10 +35,19 @@ module.exports.destroyTask = async function(req,res){
 //updating task
 module.exports.updateTask = async function(req,res){
     try{
-        await Task.findOneAndUpdate({_id:req.params.id});
-        return res.json(200,{
-            message:'task has been updated'
-        })
+      let taskId = req.params.id;
+      let updateTask = await Task.findOneAndUpdate({
+        _id:taskId
+      },{
+        title:req.body.title
+      },{
+        new:true,
+        runValidators:true
+      });
+      return res.status(200).json({
+        data:updateTask,
+        message:"task updated Successfully!"
+      })
     }catch(error){
        return res.json(401,{
         message:error.message
