@@ -1,0 +1,19 @@
+{
+  "name": "todoapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gavaskar0543/todoApi.git"
+  },
+  "author": "gavaskar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gavaskar0543/todoApi/issues"
+  },
+  "homepage": "https://github.com/Gavaskar0543/todoApi#readme"
+}
