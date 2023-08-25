@@ -86,7 +86,7 @@ module.exports.markComplete = async function(req, res) {
         message: "Task is already completed"
       });
     }
-
+  console.log("im here");
     task.completed = true;
     await task.save(); // Save the updated task
 
