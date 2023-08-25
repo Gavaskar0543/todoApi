@@ -68,3 +68,23 @@ module.exports.allTask = async function(req,res){
         })
     }
 }
+//mark done task
+module.exports.markComplete = async function(req,res){
+  try{
+    let checkId = await Task.findById({_id:req.params.id});
+    let checkCompleted = checkId.completed;
+     !checkCompleted ? true : false;
+     return res.json(200,{
+      message:"task compelted!"
+     });
+    
+  }
+  catch(error){
+    return res.json(500,{
+      message:error.message,
+      status:"internal error"
+    })
+  }
+ 
+
+}
