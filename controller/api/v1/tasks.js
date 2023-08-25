@@ -3,8 +3,10 @@ const Task = require('../../../model/todo');
 module.exports.newTodo = async function(req,res){
     try{
         const todo = await Task.create(req.body);
+        const sortedTasks = await Task.find().sort({ createdAt: 1 }); // Sorting by ascending createdAt
+
       return  res.json(200,{
-            task:todo,
+            task:sortedTasks, // Sorting by ascending createdAt
             success:true,
         })
     }
