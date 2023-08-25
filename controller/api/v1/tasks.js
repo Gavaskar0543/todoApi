@@ -71,22 +71,32 @@ module.exports.allTask = async function(req,res){
     }
 }
 //mark done task
-module.exports.markComplete = async function(req,res){
-  try{
-    let checkId = await Task.findById({_id:req.params.id});
-    let checkCompleted = checkId.completed;
-     !checkCompleted ? true : false;
-     return res.json(200,{
-      message:"task compelted!"
-     });
+module.exports.markComplete = async function(req, res) {
+  try {
+    let task = await Task.findById(req.params.id); // Removed unnecessary object wrapping
+    if (!task) {
+      return res.json(404, {
+        message: "Task not found",
+        status: "not found"
+      });
+    }
     
-  }
-  catch(error){
-    return res.json(500,{
-      message:error.message,
-      status:"internal error"
-    })
-  }
- 
+    if (task.completed) {
+      return res.json(200, {
+        message: "Task is already completed"
+      });
+    }
 
-}
+    task.completed = true;
+    await task.save(); // Save the updated task
+
+    return res.json(200, {
+      message: "Task completed!"
+    });
+  } catch (error) {
+    return res.json(500, {
+      message: error.message,
+      status: "internal error"
+    });
+  }
+};
