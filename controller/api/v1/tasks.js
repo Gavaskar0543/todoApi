@@ -91,7 +91,8 @@ module.exports.markComplete = async function(req, res) {
     await task.save(); // Save the updated task
 
     return res.json(200, {
-      message: "Task completed!"
+      message: "Task completed!",
+      success:true
     });
   } catch (error) {
     return res.json(500, {
